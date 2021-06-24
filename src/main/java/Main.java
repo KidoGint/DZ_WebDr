@@ -12,13 +12,15 @@ public class Main{
         driver.get("https://www.avito.ru/");
         WebElement params = driver.findElement(By.xpath("//option[@value =99]"));
         params.click();
-        driver.findElement(By.xpath("//input[@id ='search']")).sendKeys("Принтер");
-        driver.findElement(By.className("main-text-2PaZG")).click();
-        driver.findElement(By.xpath("//input[@placeholder='Город, регион или Россия']")).click();
-        driver.findElement(By.xpath("//input[@placeholder='Город, регион или Россия']")).sendKeys("Владивосток");
+        driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+        driver.manage().timeouts().setScriptTimeout(3,TimeUnit.SECONDS);
+            driver.findElement(By.xpath("//input[@data-marker='search-form/suggest']")).sendKeys("Принтер");
+        driver.findElement(By.xpath("//div[@data-marker='search-form/region']")).click();
+        driver.findElement(By.xpath("//input[@data-marker='popup-location/region/input']")).click();
+        driver.findElement(By.xpath("//input[@data-marker='popup-location/region/input']")).sendKeys("Владивосток");
         Thread.sleep(500);
-        driver.findElement(By.className("suggest-suggest-content-KQ__w")).click();
-        driver.findElement(By.xpath("//button[@data-marker='popup-location/save-button']")).click();
+        driver.findElement(By.xpath("//li[@data-marker='suggest(0)']")).click();
+            driver.findElement(By.xpath("//button[@data-marker='popup-location/save-button']")).click();
         if (!driver.findElement(By.xpath("//label[@data-marker='delivery-filter']")).getAttribute("class").contains("checked"))
             driver.findElement(By.xpath("//label[@data-marker='delivery-filter']")).click();
         driver.findElement(By.xpath("//button[@data-marker='search-filters/submit-button']")).click();

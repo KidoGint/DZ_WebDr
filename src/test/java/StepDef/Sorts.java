@@ -5,7 +5,7 @@ public enum Sorts {
     Дешевле(1),
     Дороже(2),
     По_дате(104);
-    public int value;
+    private int value;
     public int getValue(){
         return value;
     }

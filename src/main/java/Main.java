@@ -3,7 +3,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,7 +14,7 @@ public class Main {
         driver.get("https://www.avito.ru/");
         List<WebElement> list1 = driver.findElements(By.xpath("//select[@name]/option[contains(@data-marker,'opt')]"));
         for (WebElement webElement : list1) {
-            System.out.println(webElement.getText().replaceAll("\s","_") + "(\"" + webElement.getAttribute("value") + "\"),");
+            System.out.println(webElement.getText().replaceAll("\s", "_") + "(\"" + webElement.getAttribute("value") + "\"),");
         }
         WebElement params = driver.findElement(By.xpath("//option[@value =99]"));
         params.click();

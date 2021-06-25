@@ -63,10 +63,11 @@ enum Categories {
     Оборудование_для_бизнеса(40);
     private int value;
 
+    Categories(int value) {
+        this.value = value;
+    }
+
     public int getValue() {
         return value;
-    }
-    Categories(int value){
-        this.value = value;
     }
 }

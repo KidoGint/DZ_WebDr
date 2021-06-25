@@ -5,7 +5,6 @@ import io.cucumber.java.ru.И;
 import io.cucumber.java.ru.Пусть;
 import io.cucumber.java.ru.Тогда;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -17,16 +16,16 @@ public class StepDef {
         Hook.driver.get("https://www.avito.ru/");
     }
 
-    @ParameterType(".*")
-    public Categories categories(String category) {
-        return Categories.valueOf(category);
-    }
-
     @И("в выпадающем списке категорий выбрана {categories}")
     public static void chooseCategory(Categories category) {
 
         WebElement params = Hook.driver.findElement(By.xpath("//option[@value =" + category.getValue() + "]"));
         params.click();
+    }
+
+    @ParameterType(".*")
+    public Categories categories(String category) {
+        return Categories.valueOf(category);
     }
 
     @И("в поле поиска введено значение {word}")

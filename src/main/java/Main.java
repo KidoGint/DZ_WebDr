@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -12,6 +13,10 @@ public class Main {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://www.avito.ru/");
+        List<WebElement> list1 = driver.findElements(By.xpath("//select[@name]/option[contains(@data-marker,'opt')]"));
+        for (WebElement webElement : list1) {
+            System.out.println(webElement.getText().replaceAll("\s","_") + "(\"" + webElement.getAttribute("value") + "\"),");
+        }
         WebElement params = driver.findElement(By.xpath("//option[@value =99]"));
         params.click();
         driver.findElement(By.xpath("//input[@data-marker='search-form/suggest']")).sendKeys("Принтер");
@@ -33,7 +38,9 @@ public class Main {
             String price = list.get(i).findElement(By.xpath(".//span[contains(@class,'price-text-1Hr')]")).getText();
             System.out.println(name + " " + price);
         }
+
         driver.close();
+
     }
 
 }

@@ -6,12 +6,10 @@ public enum Sorts {
     Дороже(2),
     По_дате(104);
     private int value;
-
-    Sorts(int value) {
-        this.value = value;
-    }
-
-    public int getValue() {
+    public int getValue(){
         return value;
+    }
+    Sorts(int value){
+        this.value = value;
     }
 }
